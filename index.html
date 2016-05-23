@@ -4,19 +4,30 @@
 <body ng-app="myApp">
 
 <div ng-controller="myCtrl">
-  <h1>Click the button to run a function:</h1>
+  <h1 ng-hide="hide">Click the button to run a function:</h1>
   <button ng-click="myFunc()">OK</button>
-  <p>The button has been clicked {{count}} times.</p>
-</div>
+  <button ng-click="myFunc()">Click!</button>
+  <p ng-hide="hide">The button has been clicked {{count}} times.</p>
 
+<ul ng-hide="hideul">
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+    </ul>
+    </div>
 <script>
-angular.module('myApp', [])
+  angular.module('myApp', [])
   .controller('myCtrl', ['$scope', function($scope) {
+    $scope.hide = true;
+    $scope.hideul = true;
     $scope.count = 0;
     $scope.myFunc = function() {
-      $scope.count++;
+    $scope.hide = false;
+    $scope.hideul = false;
+    $scope.count++;
     };
   }]);
 </script>
+    
 </body>
 </html>
